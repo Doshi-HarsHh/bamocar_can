@@ -1,3 +1,7 @@
+#ifndef Bamocar_can_h
+#define Bamocar_can_h
+
+
 #define STD_TXID 0x201  // ID MC will listen to
 #define STD_RXID 0x181  // ID MC will MC respond to
 #define STD_BAUD_RATE   100000    //Standard Baudrate
