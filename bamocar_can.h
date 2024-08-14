@@ -1,7 +1,7 @@
 #ifndef BAMOCAR_CAN_H
 #define BAMOCAR_CAN_H
-
-
+void requestData();
+void setData();
 #define STD_TXID          0x201   // ID MC will listen to
 #define STD_RXID          0x181   // ID MC will MC respond to
 #define STD_BAUD_RATE     CAN_1000KBPS  //Standard Baudrate
@@ -42,12 +42,6 @@
 #define INTVL_200MS       0xC8    //Recieve data in intervals of 200ms
 #define INTVL_250MS       0xFA    //Recieve data in intervals of 250ms
 
-//All function prototypes
-void readSpeed(bool data_in_loop);
-void readAllTemp(bool data_in_loop);
-void readCurrent(bool data_in_loop);
-void readVdc_bus(bool data_in_loop);
-void readTorqueref(bool data_in_loop);
 
 
 
