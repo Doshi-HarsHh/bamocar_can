@@ -1,8 +1,12 @@
 #include "bamocar_can.h"
 
-void readSpeed(bool data_in_loop);
-void readAllTemp(bool data_in_loop);
-void readCurrent(bool data_in_loop);
-void readVdc_bus(bool data_in_loop);
-void readTorqueref(bool data_in_loop);
+void requestData(int Register, int time_var ){
+  sendMsg.data[0]=0x3D;
+  sendMsg.data[1]=Register;
+  sendMsg.data[2]=time_var;
+  mcp2515.sendMessage(&sendMsg);  
+}
+// void setData(){
+  
+// }
 //complete all the required func
