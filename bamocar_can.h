@@ -1,11 +1,12 @@
-#ifndef Bamocar_can_h
-#define Bamocar_can_h
+#ifndef BAMOCAR_CAN_H
+#define BAMOCAR_CAN_H
 
 
-#define STD_TXID 0x201  // ID MC will listen to
-#define STD_RXID 0x181  // ID MC will MC respond to
-#define STD_BAUD_RATE   100000    //Standard Baudrate
-
+#define STD_TXID          0x201   // ID MC will listen to
+#define STD_RXID          0x181   // ID MC will MC respond to
+#define STD_BAUD_RATE     CAN_1000KBPS  //Standard Baudrate
+#define STD_CSPIN         10      //Chip select on arduino 
+#define STD_RD_DLC        3       //DLC for reading data 
 // Control Registers
 #define REG_ENABLE        0x51    //Disable or Enable transmission
 #define REG_REQUEST       0x3D    //Transmission request
@@ -51,3 +52,4 @@ void readTorqueref(bool data_in_loop);
 
 
 
+#endif
