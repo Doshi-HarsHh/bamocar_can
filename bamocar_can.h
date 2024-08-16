@@ -1,12 +1,15 @@
 #ifndef BAMOCAR_CAN_H
 #define BAMOCAR_CAN_H
-void requestData();
-void setData();
+#include <SPI.h>
+#include <mcp2515.h>
+
+#define CAN_TIMEOUT 0.01 // s
 #define STD_TXID          0x201   // ID MC will listen to
 #define STD_RXID          0x181   // ID MC will MC respond to
-#define STD_BAUD_RATE     CAN_1000KBPS  //Standard Baudrate
+#define STD_BAUD_RATE     CAN_500KBPS  //Standard Baudrate
 #define STD_CSPIN         10      //Chip select on arduino 
-#define STD_RD_DLC        3       //DLC for reading data 
+#define STD_REQ_DLC        3       //DLC of requested data msg
+
 // Control Registers
 #define REG_ENABLE        0x51    //Disable or Enable transmission
 #define REG_REQUEST       0x3D    //Transmission request
@@ -23,7 +26,7 @@ void setData();
 #define REG_I_DEVICE      0xC6    //Current device
 #define REG_I_200PC       0xD9    //Current 200 PC
 
-#define REG_TORQUE        0x90    //Torque reference
+#define REG_TORQUE        0x90    //Torque reference 
 
 #define REG_RAMP_ACC      0x35    //Ramp Acceleration command
 #define REG_RAMP_DEC      0xED    //Ramp Deceleration command
@@ -43,6 +46,16 @@ void setData();
 #define INTVL_250MS       0xFA    //Recieve data in intervals of 250ms
 
 
+struct can_frame sendMsg;
+sendMsg.can_id  = STD_TXID;
+sendMsg.can_dlc = STD_REQ_DLC;
+
+struct can_frame recievedMsg;
+recieveMsg.can_id = STD_RXID;
+
+void requestData();
+void recieveMsg();
+void setData();
 
 
 
